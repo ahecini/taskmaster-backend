@@ -60,7 +60,7 @@ public class TaskController {
   @PostMapping("/tasks")
   ResponseEntity<?> newTask(@RequestBody Task newTask) {
 
-    newTask.setStatus(TaskStatus.IN_PROGRESS);
+    newTask.setStatus("IN_PROGRESS");
     EntityModel<Task> entityModel = assembler.toModel(repository.save(newTask));
 
     return ResponseEntity //
@@ -74,8 +74,8 @@ public class TaskController {
     Task task = repository.findById(id) //
         .orElseThrow(() -> new TaskNotFoundException(id));
 
-    if (task.getStatus() == TaskStatus.IN_PROGRESS) {
-      task.setStatus(TaskStatus.CANCELLED);
+    if (task.getStatus() == "IN_PROGRESS") {
+      task.setStatus("CANCELLED");
       return ResponseEntity.ok(assembler.toModel(repository.save(task)));
     }
 
@@ -93,8 +93,8 @@ public class TaskController {
     Task task = repository.findById(id) //
         .orElseThrow(() -> new TaskNotFoundException(id));
 
-    if (task.getStatus() == TaskStatus.IN_PROGRESS) {
-      task.setStatus(TaskStatus.COMPLETED);
+    if (task.getStatus() == "IN_PROGRESS") {
+      task.setStatus("COMPLETED");
       return ResponseEntity.ok(assembler.toModel(repository.save(task)));
     }
 

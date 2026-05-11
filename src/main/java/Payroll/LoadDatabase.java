@@ -14,7 +14,7 @@ class LoadDatabase {
 
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
-  @Bean
+  //@Bean
   CommandLineRunner initDatabase(EmployeeRepository employeeRepository, OrderRepository orderRepository, TaskRepository taskRepository) {
 
     return args -> {
@@ -30,8 +30,8 @@ class LoadDatabase {
         log.info("Preloaded " + order);
       });
 
-      taskRepository.save(new Task("Learn german", TaskStatus.COMPLETED));
-      taskRepository.save(new Task("Read Jurassic Park", TaskStatus.IN_PROGRESS));
+      taskRepository.save(new Task("Learn german", "COMPLETED"));
+      taskRepository.save(new Task("Read Jurassic Park", "IN_PROGRESS"));
 
       taskRepository.findAll().forEach(task -> {
         log.info("Preloaded " + task);

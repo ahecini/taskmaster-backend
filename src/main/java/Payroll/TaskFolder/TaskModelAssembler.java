@@ -20,7 +20,7 @@ public class TaskModelAssembler implements RepresentationModelAssembler<Task, En
 
     // Conditional links based on state of the task
 
-    if (task.getStatus() == TaskStatus.IN_PROGRESS) {
+    if (task.getStatus() == "IN_PROGRESS") {
       taskModel.add(linkTo(methodOn(TaskController.class).cancel(task.getId())).withRel("cancel"));
       taskModel.add(linkTo(methodOn(TaskController.class).complete(task.getId())).withRel("complete"));
     }

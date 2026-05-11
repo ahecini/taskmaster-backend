@@ -11,11 +11,11 @@ public class Task {
 
   private @Id @GeneratedValue Long id;
   private String name;
-  private TaskStatus status;
+  private String status;
 
   Task() {}
 
-  public Task(String name, TaskStatus status) {
+  public Task(String name, String status) {
 
     this.name = name;
     this.status = status;
@@ -37,11 +37,11 @@ public class Task {
     this.id = id;
   }
 
-  public void setStatus(TaskStatus status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
-  public TaskStatus getStatus() {
+  public String getStatus() {
     return this.status;
   }
 
