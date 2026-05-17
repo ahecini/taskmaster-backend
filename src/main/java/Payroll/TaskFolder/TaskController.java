@@ -105,4 +105,14 @@ public class TaskController {
             .withTitle("Method not allowed") //
             .withDetail("You can't complete atask that is in the " + task.getStatus() + " status"));
   }
+
+  @CrossOrigin(origins = "http://localhost:3000")
+  @DeleteMapping("/tasks/{id}")
+  ResponseEntity<?> deleteTask(@PathVariable Long id) {
+
+    repository.deleteById(id);
+
+    return ResponseEntity.noContent().build();
+  }
+
 }
